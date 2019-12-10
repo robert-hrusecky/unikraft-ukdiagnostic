@@ -1,0 +1,3 @@
+config LIBUKDIAGNOSTIC
+	bool "ukdiagnostic: backend diagnostic tool"
+	default n

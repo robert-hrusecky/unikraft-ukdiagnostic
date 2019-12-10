@@ -1,0 +1,7 @@
+$(eval $(call addlib_s,libukdiagnostic,$(CONFIG_LIBUKDIAGNOSTIC)))
+
+# LIBUKDIAGNOSTIC_CFLAGS-$(call gcc_version_ge,8,0) += -Wno-cast-function-type
+
+CINCLUDES-$(CONFIG_LIBUKDIAGNOSTIC) += -I$(LIBUKDIAGNOSTIC_BASE)/include
+CXXINCLUDES-$(CONFIG_LIBUKDIAGNOSTIC) += -I$(LIBUKDIAGNOSTIC_BASE)/include
+LIBUKDIAGNOSTIC_SRCS-y += $(LIBUKDIAGNOSTIC_BASE)/diagnostic.c
