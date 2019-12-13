@@ -8,14 +8,16 @@
 #include <stdlib.h>
 #include <uk/ctors.h>
 
+struct json_value;
+
 struct diagnostic_entry {
 	char *diag_name;
-	int (*func)();
+	struct json_value* (*func)(struct json_value*);
 	struct uk_list_head next;
 };
 
 void add_entry(struct diagnostic_entry *entry);
-int run_diag_function(char *name, int *out);
+int run_diag_function(char *name, struct json_value* params, struct json_value** out);
 
 #define DIAGNOSTIC_FUNCTION(name, fn)                                          \
 	static struct diagnostic_entry __STRINGCONCAT(DIAG_ENTRY__, fn) = {    \

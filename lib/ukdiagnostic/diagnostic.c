@@ -31,16 +31,16 @@ struct diagnostic_entry *find_entry(char *name)
 	return NULL;
 }
 
-int run_diag_function(char *name, int *out)
+int run_diag_function(char *name, struct json_value* params, struct json_value** out)
 {
 	struct diagnostic_entry *entry = find_entry(name);
 	if (entry == NULL) {
 		return -1;
 	}
-	*out = entry->func();
+	*out = entry->func(params);
 	return 0;
 }
-
+/*
 static int test_function()
 {
 	printf("Running test_function\n");
@@ -48,3 +48,4 @@ static int test_function()
 }
 
 DIAGNOSTIC_FUNCTION("test function", test_function);
+*/
